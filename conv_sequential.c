@@ -17,6 +17,7 @@ int main(){
     // ---- end input and malloc----
 
     // implement here
+    
     int NANS = NA - NF + 1;
     int *ANS = malloc(sizeof(int) * NANS);
 
