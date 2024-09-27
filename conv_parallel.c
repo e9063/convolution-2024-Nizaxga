@@ -17,21 +17,6 @@ int main(){
     // ---- end input and malloc----
 
     // implement here
-    int NANS = NA - NF + 1;
-    int *ANS = malloc(sizeof(int) * NANS);
-
-    for (int i = 0; i < NANS; i++) {
-      int temp = 0;
-      for (int j = 0; j < NF; j++ ) {
-        temp += A[i + j] * F[NF - j - 1];
-      }
-      ANS[i] = temp;
-    }
-
-    for (int i = 0; i < NANS; i++) {
-        printf("%d\n", ANS[i]);
-    }
-    free(ANS);
 
     // ---- free memory ----
     free(F);
