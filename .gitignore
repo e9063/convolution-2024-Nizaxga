@@ -1,9 +1,6 @@
 # env
 .venv
 
-# file_type
-*.exe
-*.txt
-
-# gibberish
-testing.c
+# conv
+conv_parallel.exe
+conv_sequential.exe

@@ -51,19 +51,6 @@ int main() {
     }
     double end_par = omp_get_wtime();
 
-    // ---- Compare and Print Results ----
-    printf("Sequential Convolution Result:\n");
-    for (int i = 0; i < NANS; i++) {
-        printf("%d ", ANS_seq[i]);
-    }
-    printf("\n");
-
-    printf("Parallel Convolution Result:\n");
-    for (int i = 0; i < NANS; i++) {
-        printf("%d ", ANS_par[i]);
-    }
-    printf("\n");
-
     // ---- Time results ----
     double time_seq = end_seq - start_seq;
     double time_par = end_par - start_par;

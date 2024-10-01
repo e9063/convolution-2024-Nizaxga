@@ -21,7 +21,7 @@ int main(){
     int NANS = NA - NF + 1;
     int *ANS = malloc(sizeof(int) * NANS);
 
-    omp_set_num_threads(4);
+    omp_set_num_threads(8);
     #pragma omp parallel
     {
       #pragma omp for schedule(static)
