@@ -50,16 +50,11 @@ int main() {
     double time_seq = end_seq - start_seq;
     double time_par = end_par - start_par;
     printf("Time taken by sequential convolution: %f seconds\n", time_seq);
-    printf("Time taken by parallel convolution (4 threads): %f seconds\n", time_par);
+    printf("Time taken by parallel convolution (8 threads): %f seconds\n", time_par);
 
     // Calculate and print speedup
-    if (time_par > 0) {
-        double speedup = time_seq / time_par;
-        printf("Speedup achieved: %f times\n", speedup);
-    } else {
-        printf("Parallel execution time is zero, cannot calculate speedup.\n");
-    }
-
+    double speedup = time_seq / time_par;
+    printf("Speedup achieved: %f times\n", speedup);
     // ---- Free memory ----
     free(A);
     free(F);
