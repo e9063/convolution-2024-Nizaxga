@@ -22,9 +22,6 @@ int main() {
     int *ANS_seq = (int*)malloc(sizeof(int) * NANS);
     int *ANS_par = (int*)malloc(sizeof(int) * NANS);
 
-    // Timing variables
-    omp_set_num_threads(8);
-
     // ---- Timing for sequential convolution ----
     double start_seq = omp_get_wtime();
     for (int i = 0; i < NANS; i++) {
@@ -38,16 +35,14 @@ int main() {
 
     // ---- Timing for parallel convolution ----
     double start_par = omp_get_wtime();
-    #pragma omp parallel
-    {
-        #pragma omp for schedule(static)
-        for (int i = 0; i < NANS; i++) {
-            int temp = 0;
-            for (int j = 0; j < NF; j++) {
-                temp += A[i + j] * F[NF - j - 1];
-            }
-            ANS_par[i] = temp;
-        }
+    omp_set_num_threads(8);
+    #pragma omp parallel for
+    for (int i = 0; i < NANS; i++) {
+      int temp = 0;
+      for (int j = 0; j < NF; j++ ) {
+        temp += A[i + j] * F[NF - j - 1];
+      }
+      ANS_par[i] = temp;
     }
     double end_par = omp_get_wtime();
 

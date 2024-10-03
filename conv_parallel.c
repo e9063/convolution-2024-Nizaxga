@@ -22,17 +22,15 @@ int main(){
     int *ANS = malloc(sizeof(int) * NANS);
 
     omp_set_num_threads(8);
-    #pragma omp parallel
-    {
-      #pragma omp for schedule(static)
-      for (int i = 0; i < NANS; i++) {
-        int temp = 0;
-        for (int j = 0; j < NF; j++ ) {
-          temp += A[i + j] * F[NF - j - 1];
-        }
-        ANS[i] = temp;
+    #pragma omp parallel for
+    for (int i = 0; i < NANS; i++) {
+      int temp = 0;
+      for (int j = 0; j < NF; j++ ) {
+        temp += A[i + j] * F[NF - j - 1];
       }
+      ANS[i] = temp;
     }
+    
 
     for (int i = 0; i < NANS; i++) {
         printf("%d\n", ANS[i]);
@@ -45,4 +43,3 @@ int main(){
     // ---- end free ----
     return 0;
 }
-
